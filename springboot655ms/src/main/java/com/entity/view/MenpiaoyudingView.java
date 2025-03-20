@@ -1,0 +1,36 @@
+package com.entity.view;
+
+import com.entity.MenpiaoyudingEntity;
+
+import com.baomidou.mybatisplus.annotations.TableName;
+import org.apache.commons.beanutils.BeanUtils;
+import java.lang.reflect.InvocationTargetException;
+
+import java.io.Serializable;
+ 
+
+/**
+ * 门票预订
+ * 后端返回视图实体辅助类   
+ * （通常后端关联的表或者自定义的字段需要返回使用）
+ * @author 
+ * @email 
+ * @date 2023-03-09 18:31:55
+ */
+@TableName("menpiaoyuding")
+public class MenpiaoyudingView  extends MenpiaoyudingEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	public MenpiaoyudingView(){
+	}
+ 
+ 	public MenpiaoyudingView(MenpiaoyudingEntity menpiaoyudingEntity){
+ 	try {
+			BeanUtils.copyProperties(this, menpiaoyudingEntity);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 		
+	}
+}
